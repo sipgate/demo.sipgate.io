@@ -1,13 +1,16 @@
 {
-  "name": "push-api",
-  "description": "push-api example",
-  "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "express": "~4.9.2",
-    "body-parser": "~1.8.2",
-    "socket.io": "~1.1.0",
-    "node-phonenumber": "~0.1.2",
-    "ejs": "~1.0.0"
-  }
+	"name": "push-api-demo-page",
+	"description": "Push-API example page",
+	"version": "0.0.1",
+	"private": true,
+	"engines": {
+		"node": "0.10.x"
+	},
+	"dependencies": {
+		"express": "~4.9.2",
+		"body-parser": "~1.8.2",
+		"socket.io": "~1.1.0",
+		"node-phonenumber": "~0.1.2",
+		"ejs": "~1.0.0"
+	}
 }
