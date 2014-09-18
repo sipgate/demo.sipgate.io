@@ -18,7 +18,7 @@ $(document).ready(function () {
 	}
 
 	// Insert one dummy row
-	insertRow("01579 1234XXX", "0211 1234567");
+	insertRow("0211 1234XXX", "01579 1234567");
 
 	// Connect socket.io client
 	var sock = io.connect();
