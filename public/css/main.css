@@ -1,0 +1,11 @@
+h1 {
+	margin-top: 60px;
+}
+
+pre {
+	background-color: #fff;
+	border-top: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-color: #ddd;
+}
