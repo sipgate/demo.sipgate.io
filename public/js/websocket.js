@@ -18,7 +18,7 @@ $(document).ready(function () {
 	}
 
 	// Insert one dummy row
-	insertRow("0211 1234XXX", "01579 1234567");
+	insertRow("0211 12345XXX", "01579 1234567");
 
 	// Connect socket.io client
 	var sock = io.connect();
@@ -31,9 +31,9 @@ $(document).ready(function () {
 
 		insertRow(data.from, data.to);
 
-		$('#phone-number-box').addClass("animated tada");
+		$('#phone').addClass("animated tada");
 		window.setTimeout(function(){
-			$('#phone-number-box').removeClass("animated tada");
+			$('#phone').removeClass("animated tada");
 		}, 2000);
 	});
 });
