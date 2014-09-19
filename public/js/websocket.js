@@ -1,8 +1,13 @@
 $(document).ready(function () {
-	// Append numbers to phone number table
-	function insertRow(from, to) {
+
+	// Update website with new call
+	function newCall(from, to) {
+		// Update number box
+		$('#number').text(from);
+
+		// Append number to phone number table
 		$("#phone-number-table").find('tbody')
-			.prepend($('<tr>')
+			.prepend($('<tr class="animated zoomInDown">')
 				.append($('<td>')
 					.text(from)
 				)
@@ -10,15 +15,24 @@ $(document).ready(function () {
 					.text(to)
 				)
 				.append($('<td>')
-					.text(moment().format('hh:mm:ss') + " Uhr")
+					.text(moment().format('HH:mm:ss') + " Uhr")
 				)
 			);
-	}
 
-	// Insert one dummy row after three seconds
+		// Animate phone image
+		$('#phone').addClass("animated tada");
+
+		// Remove animation classes after animation ends
+		window.setTimeout(function(){
+			$('.animated').removeClass("animated tada zoomInDown");
+		}, 1000);
+	};
+
+	// Insert one dummy row after two seconds
 	window.setTimeout(function(){
-		insertRow("0211 12345XXX", "01579 1234XXX");
-	}, 3000);
+		newCall("0211 12345XXX", "01579 1234XXX");
+	}, 2000);
+
 
 	// Connect socket.io client
 	var sock = io.connect();
@@ -27,16 +41,6 @@ $(document).ready(function () {
 	sock.on('new call', function (data) {
 		console.log(data);
 
-		// Update number box
-		$('#number').text(data.from);
-
-		// Append number to phone number table
-		insertRow(data.from, data.to);
-
-		// Animate phone image
-		$('#phone').addClass("animated tada");
-		window.setTimeout(function(){
-			$('#phone').removeClass("animated tada");
-		}, 2000);
+		newCall(data.from, data.to);
 	});
 });
