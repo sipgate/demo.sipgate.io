@@ -36,10 +36,28 @@ pre {
 
 #dotted-line {
 	height: 150px;
-	width: 65%;
+	width: 63%;
 	margin-left: 50%;
 	border-left: 2px dotted #aacbd8;
 	border-bottom: 2px dotted #aacbd8;
+}
+@media (max-width: 1200px) {
+	#dotted-line {
+		width: 53%;
+	}
+}
+
+
+@media (min-width: 992px) {
+	#plus {
+		position: absolute;
+		top: 40%;
+	}
+}
+@media (max-width: 991px) {
+	#plus {
+		margin: 10px 0;
+	}
 }
 
 #footer {
