@@ -1,6 +1,11 @@
 h1 {
 	margin-top: 100px;
-	margin-bottom: 30px;
+	margin-bottom: 0;
+}
+
+h1 ~ hr {
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 pre {
@@ -14,7 +19,7 @@ pre {
 #header {
 	margin-bottom: 25px;
 	background-image: url("/img/pattern.png");
-	box-shadow: 0px 1px 5px #888888 inset;
+	box-shadow: 0px -1px 5px #888888 inset;
 }
 
 #header img {
@@ -25,12 +30,12 @@ pre {
 }
 
 #phone-number-box {
-	margin-top: 50px;
+	margin-top: 183px;
 	font-size: 30px;
 }
 
 #dots {
-	margin-top: 89px;
+	margin-top: 221px;
 	border-top: 2px dashed #CADCDE;
 	/* TODO responsive */
 	width: 125px;

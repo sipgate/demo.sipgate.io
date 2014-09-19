@@ -4,6 +4,7 @@ $(document).ready(function () {
 	function newCall(from, to) {
 		// Update number box
 		$('#number').text(from);
+		$('#number').addClass("animated fadeIn")
 
 		// Append number to phone number table
 		$("#phone-number-table").find('tbody')
@@ -24,7 +25,7 @@ $(document).ready(function () {
 
 		// Remove animation classes after animation ends
 		window.setTimeout(function(){
-			$('.animated').removeClass("animated tada zoomInDown");
+			$('.animated').removeClass("animated tada fadeIn zoomInDown");
 		}, 1000);
 	};
 
