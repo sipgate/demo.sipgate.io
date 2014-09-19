@@ -25,20 +25,21 @@ pre {
 #header img {
 	max-width: 650px;
 	max-height: 368px;
-	width:100%;
-	height:100%;
+	width: 100%;
+	height: 100%;
 }
 
 #phone-number-box {
-	margin-top: 183px;
+	/* margin-top: 183px; */
 	font-size: 30px;
 }
 
-#dots {
-	margin-top: 221px;
-	border-top: 2px dashed #CADCDE;
-	/* TODO responsive */
-	width: 125px;
+#dotted-line {
+	height: 150px;
+	width: 65%;
+	margin-left: 50%;
+	border-left: 2px dotted #aacbd8;
+	border-bottom: 2px dotted #aacbd8;
 }
 
 #footer {
