@@ -29,8 +29,15 @@ pre {
 	height: 100%;
 }
 
+#description-images {
+	margin-top: 40px;
+}
+
+#live-demo {
+	margin-top: 40px;
+}
+
 #phone-number-box {
-	/* margin-top: 183px; */
 	font-size: 30px;
 }
 
