@@ -1,6 +1,4 @@
 <pre><code class="javascript">var app = require('express')();
-var server = app.listen(3000);
-var io = require('socket.io')(server);
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -13,4 +11,6 @@ app.post("/", function (request, response) {
 	console.log("to: " + to);
 
 	response.send("So Long, and Thanks for All the Fish!");
-});</code></pre>
+});
+
+app.listen(3000);</code></pre>
