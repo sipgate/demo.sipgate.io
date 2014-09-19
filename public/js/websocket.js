@@ -12,7 +12,7 @@ $(document).ready(function () {
 					.text(to)
 				)
 				.append($('<td>')
-					.text(date.toLocaleFormat("%H:%M:%S Uhr"))
+					.text(moment().format('hh:mm:ss') + " Uhr")
 				)
 			);
 	}
