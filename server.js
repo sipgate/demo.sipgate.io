@@ -1,7 +1,7 @@
 // Get port from environment or use port 3000
 var port = process.env.PORT || 3000;
 
-// Initialize express and socket.io
+// Initialize express, socket.io and node-phonenumber
 var express = require('express');
 var app = express();
 var server = app.listen(port);
@@ -43,7 +43,7 @@ app.post("/", function (request, response) {
 
 	// Send anonymous 'from' and 'to' to all connected socket.io clients
 	io.sockets.emit('new call', {
-		from: from.replace(/...$/, 'XXX'),
-		to: to.replace(/...$/, 'XXX'),
+		from: from.replace(/...$/, 'xxx'),
+		to: to.replace(/...$/, 'xxx'),
 	});
 });

@@ -1,15 +1,15 @@
 <div class="row">
-	<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+	<div class="col-md-8 col-md-offset-2">
 		<h1>Live testen</h1>
 		<hr/>
 		<p class="lead">Probieren Sie es einfach aus! Ein Anruf auf die <kbd>01579-1234567</kbd> genügt und Ihr Anruf erscheint sofort auf dieser Website - Live!</p>
 	</div>
 </div>
-<div id="live-demo" class="row">
-	<div class="col-xs-12 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-		<div id="phone-number-box" class="panel panel-default">
+<div id="demo" class="row">
+	<div class="col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+		<div class="panel panel-default">
 			<div class="panel-body text-center">
-				<span id="number">&nbsp;</span>
+				<div id="number">Ihre Rufnummer erscheint hier</div>
 			</div>
 		</div>
 		<div id="dotted-line" class="hidden-xs"></div>
@@ -19,19 +19,20 @@
 	</div>
 </div>
 <div class="row">
-	<div id="phone-number-table" class="col-xs-12 col-sm-8 col-sm-offset-2">
+	<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 		<h3 class="text-center">Eingegangene Anrufe erfolgten von</h3>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Anrufernummer</th>
-					<th>Angerufene Nummer</th>
-					<th>Uhrzeit</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-		<small><strong>Hinweis:</strong> Bla bla Datenschutz und bei Heroku</small>
+		<div class="panel panel-default">
+			<table id="log" class="table table-striped">
+				<thead>
+					<tr>
+						<th>Anrufernummer</th>
+						<th>Angerufene Nummer</th>
+						<th>Uhrzeit</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
