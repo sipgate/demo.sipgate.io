@@ -1,5 +1,5 @@
-// Get port from environment or use port 7777
-var port = process.env.PORT || 7777;
+// Get port from environment or use port 3000
+var port = process.env.PORT || 3000;
 
 // Initialize express and socket.io
 var express = require('express');
