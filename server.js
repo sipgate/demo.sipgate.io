@@ -41,9 +41,9 @@ app.post("/", function (request, response) {
 	var from = phoneUtil.format(fromNumber, format);
 	var to = phoneUtil.format(toNumber, phone.PhoneNumberFormat.NATIONAL);
 
-	// Send 'from' and 'to' to all connected socket.io clients
+	// Send anonymous 'from' and 'to' to all connected socket.io clients
 	io.sockets.emit('new call', {
 		from: from.replace(/...$/, 'XXX'),
-		to: to,
+		to: to.replace(/...$/, 'XXX'),
 	});
 });
