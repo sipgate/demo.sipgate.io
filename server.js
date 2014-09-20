@@ -9,7 +9,7 @@ var io = require('socket.io')(server);
 var phone = require('node-phonenumber');
 var phoneUtil = phone.PhoneNumberUtil.getInstance();
 
-// Set ejs template engine
+// Set ejs as template engine
 app.set('view engine', 'ejs');
 
 // Serve static files from 'public/' folder
