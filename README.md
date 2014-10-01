@@ -42,7 +42,7 @@ cd Push-API-Demo/
 npm install
 
 # Starten
-nodejs server.js
+node server.js
 
 # localhost:3000 im Browser öffnen
 ```
