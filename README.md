@@ -2,6 +2,8 @@
 
 In diesem Repository findest Du alles, was Du für die Installation unserer [Demo-Seite](https://demo.sipgate.io) benötigst.
 
+![Demo](https://raw.github.com/sipgate/Push-API-Demo/master/public/img/animation.gif)
+
 ## Hosting bei Heroku
 
 Das Demo-Repository ist überall lauffähig, mit [Heroku](https://www.heroku.com/) geht es aber [schnell und einfach](https://devcenter.heroku.com/articles/getting-started-with-nodejs):
