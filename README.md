@@ -1,8 +1,8 @@
-# Push-API-Demo
+# demo.sipgate.io
 
 In diesem Repository findest Du alles, was Du für die Installation unserer [Demo-Seite](https://demo.sipgate.io) benötigst.
 
-![Demo](https://raw.github.com/sipgate/Push-API-Demo/master/public/img/animation.gif)
+![Demo](https://raw.github.com/sipgate/demo.sipgate.io/master/public/img/animation.gif)
 
 ## Hosting bei Heroku
 
@@ -17,8 +17,8 @@ wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 heroku login
 
 # Repository clonen
-git clone https://github.com/sipgate/Push-API-Demo.git
-cd Push-API-Demo/
+git clone https://github.com/sipgate/demo.sipgate.io.git
+cd demo.sipgate.io/
 
 # Hochladen
 heroku create --region eu
@@ -37,8 +37,8 @@ Alles was du brauchst ist [Node.js](http://nodejs.org/)
 sudo apt-get install node nodejs-legacy npm
 
 # Repository clonen
-git clone https://github.com/sipgate/Push-API-Demo.git
-cd Push-API-Demo/
+git clone https://github.com/sipgate/demo.sipgate.io.git
+cd demo.sipgate.io/
 
 # Dependencies installieren
 npm install
