@@ -30,7 +30,7 @@ heroku open # oder einfach die angegebene URL direkt öffnen
 
 ## Lokale Installation
 
-Alles was du brauchst ist [Node.js](http://nodejs.org/)
+Alles was Du brauchst ist [Node.js](http://nodejs.org/)
 
 ```shell
 # Node.js installieren (Debian/Ubuntu)
