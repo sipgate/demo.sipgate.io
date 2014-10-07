@@ -1,4 +1,10 @@
-<pre><code class="lisp">(require :hunchentoot)
+<pre><code class="lisp">;; This example uses hunchentoot as webserver.
+;; You can obtain it from http://weitz.de/hunchentoot/
+;;
+;; If you use quicklisp, you can simply install it by evaluating
+;; (ql:quickload "hunchentoot")
+
+(require :hunchentoot)
 (use-package :hunchentoot)
 
 (define-easy-handler (incoming-handler :uri "/") (from to)

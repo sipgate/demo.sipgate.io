@@ -1,14 +1,27 @@
 $(document).ready(function () {
+	// Reset animation elements after animation ends
+	$('body').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (e) {
+		$(e.target).removeClass("animated");
+		$(e.target).removeClass("tada");
+		$(e.target).removeClass("fadeIn");
+		$(e.target).removeClass("zoomIn");
+	});
 
-	// Update website with new call
-	function newCall(from, to) {
-		// Update number box
+	// Animate the phone image
+	function ringPhone() {
+		$('#phone').addClass("animated tada");
+	};
+
+	// Update and animate the phone number box
+	function updatePhoneNumberBox(from) {
 		$('#number').text(from);
-		$('#number').addClass("animated fadeIn")
+		$('#number').addClass("animated zoomIn")
+	}
 
-		// Append number to phone number table
-		$("#phone-number-table").find('tbody')
-			.prepend($('<tr class="animated zoomInDown">')
+	// Append a row to the log table
+	function appendLogRow(from, to) {
+		$("#log tbody")
+			.prepend($('<tr class="animated fadeIn">')
 				.append($('<td>')
 					.text(from)
 				)
@@ -20,28 +33,24 @@ $(document).ready(function () {
 				)
 			);
 
-		// Animate phone image
-		$('#phone').addClass("animated tada");
-
-		// Remove animation classes after animation ends
-		window.setTimeout(function(){
-			$('.animated').removeClass("animated tada fadeIn zoomInDown");
-		}, 1000);
-	};
-
-	// Insert one dummy row after two seconds
-	window.setTimeout(function(){
-		newCall("0211 12345XXX", "01579 1234XXX");
-	}, 2000);
-
+		// Only keep 10 rows in log table
+		$('#log tbody tr:nth-child(n+11)').remove();
+	}
 
 	// Connect socket.io client
 	var sock = io.connect();
 
-	// Listen for 'new call' events
+	// React on 'new call' events
 	sock.on('new call', function (data) {
 		console.log(data);
 
-		newCall(data.from, data.to);
+		var from = data.from;
+		var to = data.to;
+
+		ringPhone();
+
+		updatePhoneNumberBox(from);
+
+		appendLogRow(from, to);
 	});
 });

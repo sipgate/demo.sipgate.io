@@ -1,6 +1,6 @@
 {
-	"name": "push-api-demo-page",
-	"description": "Push-API example page",
+	"name": "demo.sipgate.io",
+	"description": "demo.sipgate.io code",
 	"version": "0.0.1",
 	"private": true,
 	"engines": {
