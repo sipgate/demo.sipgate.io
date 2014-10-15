@@ -32,10 +32,10 @@ app.post("/", function(request, response) {
 	var responseText = "So Long, and Thanks for All the Fish!";
 	switch(action) {
 		case 1:		// Reject
-			responseText = '<?xml version="1.0" encoding="UTF-8"?><response><reject /></response>';
+			responseText = '<?xml version="1.0" encoding="UTF-8"?><Response><Reject /></Response>';
 			break;
 		case 2:		// Busy
-			responseText = '<?xml version="1.0" encoding="UTF-8"?><response><reject reason="busy"/></response>';
+			responseText = '<?xml version="1.0" encoding="UTF-8"?><Response><Reject reason="busy"/></Response>';
 			break;
 	}
 
