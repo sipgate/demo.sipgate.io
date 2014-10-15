@@ -27,8 +27,19 @@ app.get("/", function(req, res) {
 // Process API POST requests
 app.post("/", function(request, response) {
 
-	// Send response to API
-	response.send("So Long, and Thanks for All the Fish!");
+	// Randomly decide if we want to reject, return a busy signal or let the call go through to our voicemail
+	var action = Math.floor(Math.random() * 3);
+	var responseText = "So Long, and Thanks for All the Fish!";
+	switch(action) {
+		case 1:		// Reject
+			responseText = '<?xml version="1.0" encoding="UTF-8"?><response><reject /></response>';
+			break;
+		case 2:		// Busy
+			responseText = '<?xml version="1.0" encoding="UTF-8"?><response><reject reason="busy"/></response>';
+			break;
+	}
+
+	response.send(responseText);
 
 	// Parse and format numbers
 	var formatNumber = function(number) {
@@ -53,5 +64,6 @@ app.post("/", function(request, response) {
 	io.sockets.emit('new call', {
 		from: from,
 		to: to,
+		action: action
 	});
 });

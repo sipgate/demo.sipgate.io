@@ -19,7 +19,7 @@ $(document).ready(function () {
 	}
 
 	// Append a row to the log table
-	function appendLogRow(from, to) {
+	function appendLogRow(from, to, actionText) {
 		$("#log tbody")
 			.prepend($('<tr class="animated fadeIn">')
 				.append($('<td>')
@@ -30,6 +30,9 @@ $(document).ready(function () {
 				)
 				.append($('<td>')
 					.text(moment().format('HH:mm:ss') + " Uhr")
+				)
+				.append($('<td>')
+					.text(actionText)
 				)
 			);
 
@@ -46,11 +49,21 @@ $(document).ready(function () {
 
 		var from = data.from;
 		var to = data.to;
+		var action = data.action;
+		var actionText = "Durchgestellt";
+		switch(action) {
+			case 1:
+				actionText = "Abgelehnt";
+				break;
+			case 2:
+				actionText = "Besetzt";
+				break;
+		}
 
 		ringPhone();
 
 		updatePhoneNumberBox(from);
 
-		appendLogRow(from, to);
+		appendLogRow(from, to, actionText);
 	});
 });
