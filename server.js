@@ -31,6 +31,9 @@ app.post("/", function(request, response) {
 	var action = Math.floor(Math.random() * 3);
 	var responseText = "So Long, and Thanks for All the Fish!";
 	switch(action) {
+		case 0:         // Voicemail
+			responseText = '<?xml version="1.0" encoding="UTF-8"?><Response><Dial><Voicemail /></Dial></Response>';
+			break;
 		case 1:		// Reject
 			responseText = '<?xml version="1.0" encoding="UTF-8"?><Response><Reject /></Response>';
 			break;
