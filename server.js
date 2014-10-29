@@ -42,7 +42,7 @@ app.post("/", function(request, response) {
 			break;
 	}
 
-	response.send(responseText);
+	response.header('Content-Type','application/xml').send(responseText);
 
 	// Parse and format numbers
 	var formatNumber = function(number) {

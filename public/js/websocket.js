@@ -50,8 +50,10 @@ $(document).ready(function () {
 		var from = data.from;
 		var to = data.to;
 		var action = data.action;
-		var actionText = "Durchgestellt";
 		switch(action) {
+			case 0:
+				actionText = "Voicemail";
+				break;
 			case 1:
 				actionText = "Abgelehnt";
 				break;
