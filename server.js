@@ -8,6 +8,7 @@ var server = app.listen(port);
 var io = require('socket.io')(server);
 var phone = require('node-phonenumber');
 var phoneUtil = phone.PhoneNumberUtil.getInstance();
+var xml = require('xml');
 
 // Set ejs as template engine
 app.set('view engine', 'ejs');
@@ -27,22 +28,15 @@ app.get("/", function(req, res) {
 // Process API POST requests
 app.post("/", function(request, response) {
 
-	// Randomly decide if we want to reject, return a busy signal or let the call go through to our voicemail
-	var action = Math.floor(Math.random() * 3);
-	var responseText = "So Long, and Thanks for All the Fish!";
-	switch(action) {
-		case 0:		// Voicemail
-			responseText = '<?xml version="1.0" encoding="UTF-8"?><Response><Dial><Voicemail /></Dial></Response>';
-			break;
-		case 1:		// Reject
-			responseText = '<?xml version="1.0" encoding="UTF-8"?><Response><Reject /></Response>';
-			break;
-		case 2:		// Busy
-			responseText = '<?xml version="1.0" encoding="UTF-8"?><Response><Reject reason="busy"/></Response>';
-			break;
-	}
-
-	response.header('Content-Type','application/xml').send(responseText);
+	// Send call to voicemail
+	response.header('Content-Type', 'application/xml');
+	response.send(
+		xml({ Response: [
+			{ Dial: [
+				{ Voicemail: null }
+			] },
+		] })
+	);
 
 	// Parse and format numbers
 	var formatNumber = function(number) {
@@ -58,15 +52,17 @@ app.post("/", function(request, response) {
 		}
 
 		return phoneUtil.format(parsedNumber, format).replace(/...$/, 'xxx');
-	}
+	};
 
+	// Get POST parameters
 	var from = formatNumber(request.body.from);
 	var to = formatNumber(request.body.to);
+	var direction = request.body.direction == "in" ? "Eingehend" : "Ausgehend";
 
-	// Send 'from' and 'to' to all connected socket.io clients
+	// Send 'from', 'to' and 'direction' to all connected socket.io clients
 	io.sockets.emit('new call', {
 		from: from,
 		to: to,
-		action: action
+		direction: direction,
 	});
 });

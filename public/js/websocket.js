@@ -10,16 +10,16 @@ $(document).ready(function () {
 	// Animate the phone image
 	function ringPhone() {
 		$('#phone').addClass("animated tada");
-	};
+	}
 
 	// Update and animate the phone number box
 	function updatePhoneNumberBox(from) {
 		$('#number').text(from);
-		$('#number').addClass("animated zoomIn")
+		$('#number').addClass("animated zoomIn");
 	}
 
 	// Append a row to the log table
-	function appendLogRow(from, to, actionText) {
+	function appendLogRow(from, to, direction) {
 		$("#log tbody")
 			.prepend($('<tr class="animated fadeIn">')
 				.append($('<td>')
@@ -31,8 +31,8 @@ $(document).ready(function () {
 				.append($('<td>')
 					.text(moment().format('HH:mm:ss') + " Uhr")
 				)
-				.append($('<td>')
-					.text(actionText)
+				.append($('<td class="hidden-xs">')
+					.text(direction)
 				)
 			);
 
@@ -49,23 +49,12 @@ $(document).ready(function () {
 
 		var from = data.from;
 		var to = data.to;
-		var action = data.action;
-		switch(action) {
-			case 0:
-				actionText = "Voicemail";
-				break;
-			case 1:
-				actionText = "Abgelehnt";
-				break;
-			case 2:
-				actionText = "Besetzt";
-				break;
-		}
+		var direction = data.direction;
 
 		ringPhone();
 
 		updatePhoneNumberBox(from);
 
-		appendLogRow(from, to, actionText);
+		appendLogRow(from, to, direction);
 	});
 });

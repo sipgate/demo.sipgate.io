@@ -6,10 +6,12 @@ post '/' => sub {
 	my $c = shift;
 
 	my $from = $c->param('from');
-	my $to   = $c->param('to');
+	my $to = $c->param('to');
+	my $direction = $c->param('direction');
 
 	app->log->debug("from: '$from'");
 	app->log->debug("to: '$to'");
+	app->log->debug("direction: '$direction'");
 
 	$c->render(text => 'We ♥ perl!');
 };
