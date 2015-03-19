@@ -124,8 +124,8 @@ pre {
 	height: 150px;
 	width: 63%;
 	margin-left: 50%;
-	border-left: 2px dashed #ffd6e5;
-	border-bottom: 2px dashed #ffd6e5;
+	border-left: 2px dashed #dfd6e5;
+	border-bottom: 2px dashed #dfd6e5;
 }
 @media (max-width: 1200px) {
 	#dotted-line {
