@@ -2,6 +2,8 @@
 
 In diesem Repository findest Du alles, was Du für die Installation unserer [Demo-Seite](https://demo.sipgate.io) benötigst.
 
+Die Dokumentation und weitere Beispiele in verschiedenen Programmiersprachen findest Du in [diesem GitHub Repository](https://github.com/sipgate/sipgate.io).
+
 ![Demo](https://raw.github.com/sipgate/demo.sipgate.io/master/public/img/animation.gif)
 
 ## Hosting bei Heroku
