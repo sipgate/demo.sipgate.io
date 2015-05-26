@@ -28,41 +28,77 @@ app.get("/", function(req, res) {
 // Process API POST requests
 app.post("/", function(request, response) {
 
-	// Send call to voicemail
-	response.header('Content-Type', 'application/xml');
-	response.send(
-		xml({ Response: [
-			{ Dial: [
-				{ Voicemail: null }
-			] },
-		] })
-	);
+	if (request.body.event == 'newCall')
+	{
+		// Send call to voicemail
+		response.header('Content-Type', 'application/xml');
+		response.send(
+			xml({ Response: 
+				[
+					{ _attr: 
+						{ onHangup: request.headers.host }
+					},
+					{ Dial: 
+						[ { Voicemail: null } ] 
+					},
+				]
+			})
+		);
 
-	// Parse and format numbers
-	var formatNumber = function(number) {
-		if (number.match("anonymous")) {
-			return "Anonym";
-		}
+		// Parse and format numbers
+		var formatNumber = function(number) {
+			if (number.match("anonymous")) {
+				return "Anonym";
+			}
 
-		var parsedNumber = phoneUtil.parse("+" + number, "DE");
+			var parsedNumber = phoneUtil.parse("+" + number, "DE");
 
-		var format = phone.PhoneNumberFormat.INTERNATIONAL;
-		if (parsedNumber.getCountryCode() == 49) {
-			format = phone.PhoneNumberFormat.NATIONAL;
-		}
+			var format = phone.PhoneNumberFormat.INTERNATIONAL;
+			if (parsedNumber.getCountryCode() == 49) {
+				format = phone.PhoneNumberFormat.NATIONAL;
+			}
 
-		return phoneUtil.format(parsedNumber, format).replace(/...$/, 'xxx');
-	};
+			return phoneUtil.format(parsedNumber, format).replace(/...$/, 'xxx');
+		};
 
-	// Get POST parameters
-	var from = formatNumber(request.body.from);
-	var to = formatNumber(request.body.to);
-	var direction = request.body.direction == "in" ? "Eingehend" : "Ausgehend";
+		// Get POST parameters
+		var from = formatNumber(request.body.from);
+		var to = formatNumber(request.body.to);
+		var direction = request.body.direction == "in" ? "Eingehend" : "Ausgehend";
 
-	// Send 'from', 'to' and 'direction' to all connected socket.io clients
-	io.sockets.emit('new call', {
-		from: from,
-		to: to,
-		direction: direction,
-	});
+		// Send 'from', 'to' and 'direction' to all connected socket.io clients
+		io.sockets.emit('new call', {
+			from: from,
+			to: to,
+			direction: direction,
+			callId: request.body.callId,
+		});
+	}
+	else if (request.body.event == 'hangup')
+	{
+		response.send();
+
+		var getCause = function(cause) {
+			switch(cause)
+			{
+				case 'busy':
+					return 'Besetzt';
+				case 'callEnd':
+					return 'Aufgelegt';
+				case 'cancel':
+					return 'Abgebrochen';
+				case 'noAnswer':
+					return 'Abgewiesen';
+				default:
+					return 'Beendet';
+			}
+		};
+
+		var cause = getCause(request.body.cause);
+
+		io.sockets.emit('end call', {
+			callId: request.body.callId,
+			cause: cause
+		});
+	}
 });

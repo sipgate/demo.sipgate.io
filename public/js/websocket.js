@@ -5,6 +5,7 @@ $(document).ready(function () {
 		$(e.target).removeClass("tada");
 		$(e.target).removeClass("fadeIn");
 		$(e.target).removeClass("zoomIn");
+		$(e.target).removeClass("flash");
 	});
 
 	// Animate the phone image
@@ -19,7 +20,7 @@ $(document).ready(function () {
 	}
 
 	// Append a row to the log table
-	function appendLogRow(from, to, direction) {
+	function appendLogRow(from, to, direction, callId) {
 		$("#log tbody")
 			.prepend($('<tr class="animated fadeIn">')
 				.append($('<td>')
@@ -34,10 +35,22 @@ $(document).ready(function () {
 				.append($('<td class="hidden-xs">')
 					.text(direction)
 				)
+				.append($('<td id="call' + callId + '" class="hidden-xs">')
+					.text('Aktiv')
+				)
 			);
 
 		// Only keep 10 rows in log table
 		$('#log tbody tr:nth-child(n+11)').remove();
+	}
+
+	function updateCallStatus(callId, cause) {
+		var element = $('#call' + callId);
+
+		if (element.length > 0) {
+			element[0].innerHTML = cause;
+			element.parent().addClass('animated flash');
+		}
 	}
 
 	// Connect socket.io client
@@ -45,16 +58,22 @@ $(document).ready(function () {
 
 	// React on 'new call' events
 	sock.on('new call', function (data) {
-		console.log(data);
-
 		var from = data.from;
 		var to = data.to;
 		var direction = data.direction;
+		var callId = data.callId;
 
 		ringPhone();
 
 		updatePhoneNumberBox(from);
 
-		appendLogRow(from, to, direction);
+		appendLogRow(from, to, direction, callId);
+	});
+
+	sock.on('end call', function (data) {
+		var callId = data.callId;
+		var cause = data.cause;
+
+		updateCallStatus(callId, cause);
 	});
 });
