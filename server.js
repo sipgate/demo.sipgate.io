@@ -83,7 +83,7 @@ app.post("/", function(request, response) {
 			{
 				case 'busy':
 					return 'Besetzt';
-				case 'callEnd':
+				case 'normalClearing':
 					return 'Aufgelegt';
 				case 'cancel':
 					return 'Abgebrochen';
