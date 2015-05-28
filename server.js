@@ -36,7 +36,7 @@ app.post("/", function(request, response) {
 			xml({ Response: 
 				[
 					{ _attr: 
-						{ onHangup: request.headers.host }
+						{ onHangup: "http://" + request.headers.host }
 					},
 					{ Dial: 
 						[ { Voicemail: null } ] 
