@@ -36,7 +36,7 @@ $(document).ready(function () {
 					.text(direction)
 				)
 				.append($('<td id="call' + callId + '" class="hidden-xs">')
-					.text('Aktiv')
+					.text('Klingelt')
 				)
 			);
 
@@ -69,6 +69,12 @@ $(document).ready(function () {
 
 		appendLogRow(from, to, direction, callId);
 	});
+
+    sock.on('answer', function (data) {
+        var callId = data.callId;
+
+        updateCallStatus(callId, "Abgenommen");
+    });
 
 	sock.on('end call', function (data) {
 		var callId = data.callId;

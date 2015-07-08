@@ -35,8 +35,9 @@ app.post("/", function(request, response) {
 		response.send(
 			xml({ Response: 
 				[
-					{ _attr: 
-						{ onHangup: "http://" + request.headers.host }
+					{ _attr:
+						{ onAnswer: "http://" + request.headers.host,
+						  onHangup: "http://" + request.headers.host }
 					},
 					{ Dial: 
 						[ { Voicemail: null } ] 
@@ -74,6 +75,14 @@ app.post("/", function(request, response) {
 			callId: request.body.callId,
 		});
 	}
+    else if (request.body.event == 'answer')
+    {
+        response.send();
+
+        io.sockets.emit('answer', {
+            callId: request.body.callId
+        });
+    }
 	else if (request.body.event == 'hangup')
 	{
 		response.send();
