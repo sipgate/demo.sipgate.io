@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>connect with sipgate.io</title>
+
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+
+		<link rel="stylesheet" href="/css/main.css">
+	</head>
+	<body>
+		<div class="container-fluid">
+            <div id="header" class="row">
+                <div class="col-xs-12 text-center">
+                    <a href="https://www.sipgate.io"><img src="https://www.simquadrat.de/img/static/sipgateio_logo.png" alt="Header"/></a>
+                    <h1>connect with sipgate.io — die Telefonie-API</h1>
+                </div>
+            </div>
+<!--            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <a href="javascript:" data-url="https://www.facebook.com/sharer/sharer.php?u=sipgate.io" class="btn-social"><i class="fa fa-facebook"></i><span class="btn-span"> Share</span></a>
+                    <a href="javascript:" data-url="http://twitter.com/home?status=Anrufmonitoring API von %23sipgate - sipgate.io" class=" btn-social"><i class="fa fa-twitter"></i><span class="btn-span"> Tweet</span></a>
+                    <a href="javascript:" data-url="https://plus.google.com/share?url=sipgate.io" class="btn-social"><i class="fa fa-google-plus"></i><span class="btn-span"> Share</span></a>
+                    <a href="https://github.com/sipgate/sipgate.io" class="github-button button-outline" data-icon="octicon-star" data-style="mega" data-count-href="/sipgate/sipgate.io/stargazers" data-count-api="/repos/sipgate/sipgate.io#stargazers_count">Star</a>
+                    <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+                </div>
+            </div>
+-->
+		</div>
+		<div class="container">
+            <div id="connect-demo" class="row">
+                <div class="col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body text-center">
+
+                            <form method="get" action="http://secure.dev64-247.sipgate.de:10080/settings/sipgateio/connect">
+                                Erkl&auml;render Text
+                                <input type="hidden" name="incomingUrl" value="blin">
+                                <input type="hidden" name="outgoingUrl" value="blubb">
+                                <br>
+                                <button class="btn btn-primary btn-lg">Telefonie einbinden</button>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div id="dotted-line" class="hidden-xs"></div>
+                </div>
+                <div class="hidden-xs col-sm-4 col-md-3">
+                    <img id="phone" src="/img/phone.png" alt="Phone" class="pull-right"/>
+                </div>
+            </div>
+		</div>
+		<div class="container-fluid">
+			<% include partials/imprint %>
+		</div>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment-with-locales.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/js/websocket.js"></script>
+		<script src="/js/social.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<!-- We are hiring: http://www.sipgate.de/jobs -->
+	</body>
+</html>

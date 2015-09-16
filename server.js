@@ -25,6 +25,11 @@ app.get("/", function(req, res) {
 	res.render('index');
 });
 
+// Serve 'connect.html'
+app.get("/connect", function(req, res) {
+        res.render('connect');
+});
+
 // Process API POST requests
 app.post("/", function(request, response) {
 
