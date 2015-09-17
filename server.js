@@ -65,8 +65,8 @@ app.post("/", function(request, response) {
 			xml({ Response:
 				[
 					{ _attr:
-						{ onAnswer: "https://" + request.headers.host + "?token=" + namespace,
-						  onHangup: "https://" + request.headers.host + "?token=" + namespace}
+						{ onAnswer: "https://" + request.headers.host + (namespace ? "?token=" + namespace : ""),
+						  onHangup: "https://" + request.headers.host + (namespace ? "?token=" + namespace : "")}
 					},
 					namespace ? {} : { Dial:
 						[ { Voicemail: null } ]
