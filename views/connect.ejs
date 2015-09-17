@@ -9,10 +9,12 @@
 
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/monokai_sublime.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
 
 		<link rel="stylesheet" href="/css/main.css">
 	</head>
-	<body>
+	<body data-token="<%= namespace %>">
 		<div class="container-fluid">
             <div id="header" class="row">
                 <div class="col-xs-12 text-center">
@@ -31,28 +33,53 @@
             </div>
 -->
 		</div>
-		<div class="container">
-            <div id="connect-demo" class="row">
-                <div class="col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-                    <div class="panel panel-default">
-                        <div class="panel-body text-center">
+		<div class="container" style="width: 750px">
+    		<div id="connect-demo" class="row">
 
-                            <form method="get" action="http://secure.dev64-247.sipgate.de:10080/settings/sipgateio/connect">
-                                Erkl&auml;render Text
-                                <input type="hidden" name="incomingUrl" value="blin">
-                                <input type="hidden" name="outgoingUrl" value="blubb">
-                                <br>
-                                <button class="btn btn-primary btn-lg">Telefonie einbinden</button>
-                            </form>
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
 
-                        </div>
-                    </div>
-                    <div id="dotted-line" class="hidden-xs"></div>
-                </div>
-                <div class="hidden-xs col-sm-4 col-md-3">
-                    <img id="phone" src="/img/phone.png" alt="Phone" class="pull-right"/>
+								<% if (isSuccess) { %>
+									<p>
+										Herzlichen Glückwunsch, Sie haben erfolgreich Telefonie eingebunden.
+									</p>
+
+									<p>
+										Rufen Sie doch jemanden mit einer Ihrer sipgate team Nummern an. <br>
+										Der Anruf erscheint
+										sofort hier auf der Seite! Na los, worauf warten Sie noch?
+									</p>
+
+
+									<table id="log" class="table table-striped" style="text-align: left">
+										<thead>
+											<tr>
+												<th>Anrufernummer</th>
+												<th>Angerufene Nummer</th>
+												<th>Uhrzeit</th>
+												<th class="hidden-xs">Anrufrichtung</th>
+												<th class="hidden-xs">Status</th>
+											</tr>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+
+
+								<% } else { %>
+                    <form method="get" action="http://secure.local.sipgate.de:10080/settings/sipgateio/connect">
+                        <p>
+													Verbinden Sie Ihren sipgate.de Team Account mit dieser Seite, und Anrufe Ihres Accounts erscheinen hier!
+												</p>
+                        <input type="hidden" name="url" value="<%= url %>/?token=<%= namespace %>">
+												<input type="hidden" name="successUrl" value="<%= url %>/success?token=<%= namespace %>">
+                        <br>
+                        <button class="btn btn-primary btn-lg">Telefonie einbinden</button>
+                    </form>
+								<% } %>
                 </div>
             </div>
+        </div>
 		</div>
 		<div class="container-fluid">
 			<% include partials/imprint %>

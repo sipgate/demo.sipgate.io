@@ -53,8 +53,10 @@ $(document).ready(function () {
 		}
 	}
 
+	var namespace = $('body').data("token");
+
 	// Connect socket.io client
-	var sock = io.connect();
+	var sock = namespace ? io('/' + namespace) : io.connect();
 
 	// React on 'new call' events
 	sock.on('new call', function (data) {

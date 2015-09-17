@@ -27,25 +27,49 @@ app.get("/", function(req, res) {
 
 // Serve 'connect.html'
 app.get("/connect", function(req, res) {
-        res.render('connect');
+			var namespace = 'demo' + Math.random();
+
+      res.render('connect', {
+				namespace: namespace,
+        url: "http://" + req.headers.host,
+				isSuccess: false
+      });
+});
+
+app.get("/success", function(req, res) {
+	var namespace = req.query.token;
+
+	res.render('connect', {
+		namespace: namespace,
+		isSuccess: true
+	});
+
+	io.of('/' + namespace).on('connection', function(socket) {
+		console.log('connected');
+	})
+
+
 });
 
 // Process API POST requests
 app.post("/", function(request, response) {
+
+	var namespace = request.query.token;
+	var socket = namespace ? io.of('/' + namespace) : io.sockets;
 
 	if (request.body.event == 'newCall')
 	{
 		// Send call to voicemail
 		response.header('Content-Type', 'application/xml');
 		response.send(
-			xml({ Response: 
+			xml({ Response:
 				[
 					{ _attr:
-						{ onAnswer: "http://" + request.headers.host,
-						  onHangup: "http://" + request.headers.host }
+						{ onAnswer: request.protocol + "://" + request.headers.host,
+						  onHangup: request.protocol + "://" + request.headers.host }
 					},
-					{ Dial: 
-						[ { Voicemail: null } ] 
+					namespace ? {} : { Dial:
+						[ { Voicemail: null } ]
 					},
 				]
 			})
@@ -73,7 +97,7 @@ app.post("/", function(request, response) {
 		var direction = request.body.direction == "in" ? "Eingehend" : "Ausgehend";
 
 		// Send 'from', 'to' and 'direction' to all connected socket.io clients
-		io.sockets.emit('new call', {
+		socket.emit('new call', {
 			from: from,
 			to: to,
 			direction: direction,
@@ -84,7 +108,7 @@ app.post("/", function(request, response) {
     {
         response.send();
 
-        io.sockets.emit('answer', {
+        socket.emit('answer', {
             callId: request.body.callId
         });
     }
@@ -110,7 +134,7 @@ app.post("/", function(request, response) {
 
 		var cause = getCause(request.body.cause);
 
-		io.sockets.emit('end call', {
+		socket.emit('end call', {
 			callId: request.body.callId,
 			cause: cause
 		});
