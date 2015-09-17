@@ -31,7 +31,7 @@ app.get("/connect", function(req, res) {
 
       res.render('connect', {
 				namespace: namespace,
-        url: req.protocol + "://" + req.headers.host,
+        url: "https://" + req.headers.host,
 				isSuccess: false
       });
 });
@@ -65,8 +65,8 @@ app.post("/", function(request, response) {
 			xml({ Response:
 				[
 					{ _attr:
-						{ onAnswer: request.protocol + "://" + request.headers.host,
-						  onHangup: request.protocol + "://" + request.headers.host }
+						{ onAnswer: "https://" + request.headers.host,
+						  onHangup: "https://" + request.headers.host }
 					},
 					namespace ? {} : { Dial:
 						[ { Voicemail: null } ]
