@@ -31,7 +31,7 @@ app.get("/connect", function(req, res) {
 
       res.render('connect', {
 				namespace: namespace,
-        url: "http://" + req.headers.host,
+        url: req.protocol + req.headers.host,
 				isSuccess: false
       });
 });
