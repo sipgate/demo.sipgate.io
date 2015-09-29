@@ -26,6 +26,11 @@ pre {
 	margin: 10px 0;
 }
 
+#header .logo {
+	max-width: 180px;
+	margin-bottom: 8px;
+}
+
 .btn-social {
 	padding: 0 10px;
 	height: 28px;
