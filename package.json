@@ -7,11 +7,11 @@
 		"node": "0.10.x"
 	},
 	"dependencies": {
-		"express": "~4.9.2",
 		"body-parser": "~1.8.2",
-		"socket.io": "~1.1.0",
+		"ejs": "^2.5.7",
+		"express": "~4.9.2",
 		"node-phonenumber": "~0.1.2",
-		"ejs": "~1.0.0",
+		"socket.io": "~1.1.0",
 		"xml": "~1.0.0"
 	}
 }
