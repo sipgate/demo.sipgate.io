@@ -1,143 +1,142 @@
 h1 {
-	margin-top: 120px;
-	margin-bottom: 0;
+  margin-top: 120px;
+  margin-bottom: 0;
 }
 h1 ~ hr {
-	margin-top: 10px;
-	margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 pre {
-	background-color: #fff;
-	border-top: 0;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border-color: #ddd;
+  background-color: #fff;
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-color: #ddd;
 }
 
 #header {
-	padding: 100px 0;
-	margin-bottom: 20px;
-	background-image: url("/img/header_background.jpg");
-	box-shadow: 0px -1px 5px #888888 inset;
-	color: white;
+  padding: 100px 0;
+  margin-bottom: 20px;
+  background-image: url("/img/header_background.jpg");
+  box-shadow: 0px -1px 5px #888888 inset;
+  color: white;
 }
 #header h1 {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 
 #header .logo {
-	max-width: 180px;
-	margin-bottom: 8px;
+  max-width: 180px;
+  margin-bottom: 8px;
 }
 
 .btn-social {
-	padding: 0 10px;
-	height: 28px;
-	line-height: 26px;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
-	background-image: linear-gradient(to bottom, #fcfcfc, #eeeeee);
-	background-repeat: repeat-x;
-	font-weight: bold;
-	color: #333;
-	white-space: nowrap;
-	vertical-align: middle;
-	cursor: pointer;
-	border: 1px solid #d5d5d5;
-	border-radius: 3px;
-	font-size:18px;
-	border-bottom-color: rgb(213, 213, 213);
-	border-image-repeat: stretch;
-	display: inline-block;
-	position: relative;
-	margin-bottom: 20px;
+  padding: 0 10px;
+  height: 28px;
+  line-height: 26px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  background-image: linear-gradient(to bottom, #fcfcfc, #eeeeee);
+  background-repeat: repeat-x;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  font-size: 18px;
+  border-bottom-color: rgb(213, 213, 213);
+  border-image-repeat: stretch;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .btn-span {
-	color: rgb(51, 51, 51);
-	cursor: pointer;
-	display: inline;
-	font-family: Helvetica, Arial, freesans, clean, sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-	line-height: 26px;
-	text-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px;
-	margin: 0 0 0 5px;
-	white-space: nowrap;
-	width: auto;
-	vertical-align: top;
-
+  color: rgb(51, 51, 51);
+  cursor: pointer;
+  display: inline;
+  font-family: Helvetica, Arial, freesans, clean, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 26px;
+  text-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px;
+  margin: 0 0 0 5px;
+  white-space: nowrap;
+  width: auto;
+  vertical-align: top;
 }
 
 .btn-social:hover {
-	color: #333;
-	text-decoration: none;
-	background-color: #ddd;
-	background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
-	border-color: #ccc;
+  color: #333;
+  text-decoration: none;
+  background-color: #ddd;
+  background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
+  border-color: #ccc;
 }
 
 .btn-social:active {
-	background-color: #dcdcdc;
-	background-image: none;
-	border-color: #b5b5b5;
-	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  background-color: #dcdcdc;
+  background-image: none;
+  border-color: #b5b5b5;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .btn-social:focus {
-	border-color: #51a7e8;
+  border-color: #51a7e8;
 }
 
 #headline {
-	margin-top: 60px;
+  margin-top: 60px;
 }
 @media (max-width: 767px) {
-	#headline {
-		margin-top: 30px;
-	}
+  #headline {
+    margin-top: 30px;
+  }
 }
 
 .description-images {
-	margin-top: 30px;
+  margin-top: 30px;
 }
 
 .plus {
-	position: absolute;
-	top: 40%;
-	z-index: -100;
+  position: absolute;
+  top: 40%;
+  z-index: -100;
 }
 .plus-xs {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 
 #demo {
-	margin-top: 60px;
-	margin-bottom: 60px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 @media (max-width: 767px) {
-	#demo {
-		margin-top: 0;
-		margin-bottom: 0;
-	}
+  #demo {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 #number {
-	font-size: 30px;
+  font-size: 30px;
 }
 
 #dotted-line {
-	height: 150px;
-	width: 63%;
-	margin-left: 50%;
-	border-left: 2px dashed #dfd6e5;
-	border-bottom: 2px dashed #dfd6e5;
+  height: 150px;
+  width: 63%;
+  margin-left: 50%;
+  border-left: 2px dashed #dfd6e5;
+  border-bottom: 2px dashed #dfd6e5;
 }
 @media (max-width: 1200px) {
-	#dotted-line {
-		width: 53%;
-	}
+  #dotted-line {
+    width: 53%;
+  }
 }
 
 #footer {
-	margin-bottom: 120px;
+  margin-bottom: 120px;
 }

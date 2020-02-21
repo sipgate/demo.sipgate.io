@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="de">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-		<title>connect with sipgate.io</title>
+    <title>connect with sipgate.io</title>
 
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/monokai_sublime.min.css">
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/monokai_sublime.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css"
+    />
 
-		<link rel="stylesheet" href="/css/main.css">
-	</head>
-	<body data-token="<%= namespace %>">
-		<div class="container-fluid">
-            <div id="header" class="row">
-                <div class="col-xs-12 text-center">
-                    <a href="https://www.sipgate.io"><img src="https://www.simquadrat.de/img/static/sipgateio_logo.png" alt="Header"/></a>
-                    <h1>connect with sipgate.io — die Telefonie-API</h1>
-                </div>
-            </div>
-<!--            <div class="row">
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body data-token="<%= namespace %>">
+    <div class="container-fluid">
+      <div id="header" class="row">
+        <div class="col-xs-12 text-center">
+          <a href="https://www.sipgate.io"
+            ><img
+              src="https://www.simquadrat.de/img/static/sipgateio_logo.png"
+              alt="Header"
+          /></a>
+          <h1>connect with sipgate.io — die Telefonie-API</h1>
+        </div>
+      </div>
+      <!--            <div class="row">
                 <div class="col-lg-10 col-lg-offset-1">
                     <a href="javascript:" data-url="https://www.facebook.com/sharer/sharer.php?u=sipgate.io" class="btn-social"><i class="fa fa-facebook"></i><span class="btn-span"> Share</span></a>
                     <a href="javascript:" data-url="http://twitter.com/home?status=Anrufmonitoring API von %23sipgate - sipgate.io" class=" btn-social"><i class="fa fa-twitter"></i><span class="btn-span"> Tweet</span></a>
@@ -32,68 +48,82 @@
                 </div>
             </div>
 -->
-		</div>
-		<div class="container" style="width: 750px">
-    		<div id="connect-demo" class="row">
+    </div>
+    <div class="container" style="width: 750px">
+      <div id="connect-demo" class="row">
+        <div class="panel panel-default">
+          <div class="panel-body text-center">
+            <% if (isSuccess) { %>
+            <p>
+              Herzlichen Glückwunsch, Sie haben erfolgreich Telefonie
+              eingebunden.
+            </p>
 
-            <div class="panel panel-default">
-                <div class="panel-body text-center">
+            <p>
+              Rufen Sie doch jemanden mit einer Ihrer sipgate team Nummern an.
+              <br />
+              Der Anruf erscheint sofort hier auf der Seite! Na los, worauf
+              warten Sie noch?
+            </p>
 
-								<% if (isSuccess) { %>
-									<p>
-										Herzlichen Glückwunsch, Sie haben erfolgreich Telefonie eingebunden.
-									</p>
+            <table
+              id="log"
+              class="table table-striped"
+              style="text-align: left"
+            >
+              <thead>
+                <tr>
+                  <th>Anrufernummer</th>
+                  <th>Angerufene Nummer</th>
+                  <th>Uhrzeit</th>
+                  <th class="hidden-xs">Anrufrichtung</th>
+                  <th class="hidden-xs">Status</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
 
-									<p>
-										Rufen Sie doch jemanden mit einer Ihrer sipgate team Nummern an. <br>
-										Der Anruf erscheint
-										sofort hier auf der Seite! Na los, worauf warten Sie noch?
-									</p>
-
-
-									<table id="log" class="table table-striped" style="text-align: left">
-										<thead>
-											<tr>
-												<th>Anrufernummer</th>
-												<th>Angerufene Nummer</th>
-												<th>Uhrzeit</th>
-												<th class="hidden-xs">Anrufrichtung</th>
-												<th class="hidden-xs">Status</th>
-											</tr>
-										</thead>
-										<tbody>
-										</tbody>
-									</table>
-
-
-								<% } else { %>
-                    <form method="get" action="https://sipgate.io/de/connect">
-                        <p>
-													Verbinden Sie Ihren sipgate.de Team Account mit dieser Seite, und Anrufe Ihres Accounts erscheinen hier!
-												</p>
-                        <input type="hidden" name="url" value="<%= url %>/?token=<%= namespace %>">
-												<input type="hidden" name="successUrl" value="<%= url %>/success?token=<%= namespace %>">
-                        <br>
-                        <button class="btn btn-primary btn-lg">Telefonie einbinden</button>
-                    </form>
-								<% } %>
-                </div>
-            </div>
+            <% } else { %>
+            <form method="get" action="https://sipgate.io/de/connect">
+              <p>
+                Verbinden Sie Ihren sipgate.de Team Account mit dieser Seite,
+                und Anrufe Ihres Accounts erscheinen hier!
+              </p>
+              <input
+                type="hidden"
+                name="url"
+                value="<%= url %>/?token=<%= namespace %>"
+              />
+              <input
+                type="hidden"
+                name="successUrl"
+                value="<%= url %>/success?token=<%= namespace %>"
+              />
+              <br />
+              <button class="btn btn-primary btn-lg">
+                Telefonie einbinden
+              </button>
+            </form>
+            <% } %>
+          </div>
         </div>
-		</div>
-		<div class="container-fluid">
-			<% include partials/imprint %>
-		</div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <% include partials/imprint %>
+    </div>
 
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment-with-locales.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
-		<script src="/socket.io/socket.io.js"></script>
-		<script src="/js/websocket.js"></script>
-		<script src="/js/social.js"></script>
-		<script>hljs.initHighlightingOnLoad();</script>
-		<!-- We are hiring: http://www.sipgate.de/jobs -->
-	</body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment-with-locales.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/websocket.js"></script>
+    <script src="/js/social.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <!-- We are hiring: http://www.sipgate.de/jobs -->
+  </body>
 </html>

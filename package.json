@@ -1,17 +1,32 @@
 {
-	"name": "demo.sipgate.io",
-	"description": "demo.sipgate.io code",
-	"version": "0.0.1",
-	"private": true,
-	"engines": {
-		"node": ">=0.10.x"
-	},
-	"dependencies": {
-		"body-parser": "^1.19.0",
-		"ejs": "^2.5.7",
-		"express": "^4.17.1",
-		"node-phonenumber": "~0.1.2",
-		"socket.io": "^2.3.0",
-		"xml": "~1.0.0"
-	}
+  "name": "demo.sipgate.io",
+  "description": "demo.sipgate.io code",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.5.7",
+    "express": "^4.17.1",
+    "node-phonenumber": "~0.1.2",
+    "socket.io": "^2.3.0",
+    "xml": "~1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js}": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  }
 }
