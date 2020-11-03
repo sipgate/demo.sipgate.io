@@ -1,3 +1,6 @@
+**Deprecation Notice:** This repository has been deprecated in favor of [https://www.sipgate.io/webhooks](https://www.sipgate.io/webhooks)
+
+
 # demo.sipgate.io
 
 In diesem Repository findest Du alles, was Du für die Installation unserer [Demo-Seite](https://demo.sipgate.io) benötigst.
